@@ -1,1 +1,0 @@
-<?php echo "URL Rewrite Works!"; ?>
