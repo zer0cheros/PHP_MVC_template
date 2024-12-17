@@ -1,9 +1,11 @@
 <?php
 
+require_once APP_ROOT . '/app/Core/View.php';
+
 class HomeController extends Controller
 {
     public function index()
     {
-        $this->view('home', ['title' => 'Welcome to MyMVCApp']);
+        View::render('home', ['title' => 'Welcome to MyMVCApp']);
     }
 }

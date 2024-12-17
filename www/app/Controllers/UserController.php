@@ -1,11 +1,12 @@
 <?php
 
+require_once APP_ROOT . '/app/Core/View.php';
 
 class UserController extends Controller
 {
     public function index()
     {
-        $this->view('user', ['title' => 'User Page', 'content' => 'Welcome to the user page!']);
+        View::render('user', ['title' => 'User Page', 'content' => 'Welcome to the user page!']);
     }
     public function profile($id = null)
     {
@@ -16,6 +17,6 @@ class UserController extends Controller
         require_once APP_ROOT . '/app/Model/UserModel.php';
         $userModel = new UserModel();
         $user = $userModel->getUserById($id);
-        $this->view('user_profile', ['title' => "User Profile", 'user' => $user]);
+        View::render('user_profile', ['title' => "User Profile", 'user' => $user]);
     }
 }
