@@ -14,10 +14,12 @@ class API
     public function getBody()
     {
         $body = [];
+        // ifall det är GET
         if ($this->metod === 'GET') {
             foreach ($_GET as $key => $value) {
                 $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
+            // ifall det är POST
         } else if ($this->metod === 'POST') {
             foreach ($_POST as $key => $value) {
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
