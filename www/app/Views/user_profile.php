@@ -7,9 +7,7 @@
 </head>
 <body>
     <h1><?php echo $data['title']; ?></h1>
-    <?php foreach ($data['user'] as $user) : ?>
-        <p>Username: <?php echo $user['username']; ?></p>
-        <p>Email: <?php echo $user['email']; ?></p>
-    <?php endforeach; ?> 
+    <p>Username: <?php echo $data['user']['username'] ?></p>
+    <p>Email: <?php echo $data['user']['email'] ?></p>
 </body>
 </html>
