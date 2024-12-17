@@ -1,5 +1,6 @@
 <?php 
 
+
 class Database 
 {
     private $pdo;
@@ -41,7 +42,7 @@ class Database
     public function single()
     {
         $this->execute();
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function resultSet()

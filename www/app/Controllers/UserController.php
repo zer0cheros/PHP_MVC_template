@@ -16,6 +16,6 @@ class UserController extends Controller
         require_once APP_ROOT . '/app/Model/UserModel.php';
         $userModel = new UserModel();
         $user = $userModel->getUserById($id);
-        $this->view('user_profile', ['title' => "User Profile", 'userId' => $user]);
+        $this->view('user_profile', ['title' => "User Profile", 'user' => $user]);
     }
 }

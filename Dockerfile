@@ -4,6 +4,13 @@ FROM php:8.2-apache
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
 
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libonig-dev \
+    libsqlite3-dev \
+    libzip-dev \
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql pdo_sqlite
+
 # Copy application files to the container
 COPY ./www /var/www/html/
 
