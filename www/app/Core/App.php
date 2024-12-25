@@ -1,5 +1,5 @@
 <?php
-
+require_once APP_ROOT . '/app/Core/AuthMiddleware.php';
 
 class App
 {
@@ -20,7 +20,11 @@ class App
 
     require_once APP_ROOT . '/app/Controllers/' . $this->controller . '.php';
     $this->controller = new $this->controller;
-
+    if ($this->controller instanceof UserController) {
+        AuthMiddleware::handle(function () {
+            AuthMiddleware::checkAuth();
+        });
+    }
     if (isset($url[1]) && method_exists($this->controller, $url[1])) {
         $this->method = $url[1];
         unset($url[1]);
