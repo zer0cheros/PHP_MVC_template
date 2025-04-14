@@ -1,8 +1,6 @@
 <?php
 
 require_once APP_ROOT . '/app/Core/View.php';
-require_once APP_ROOT . '/app/Core/Session.php';
-
 class UserController extends Controller
 {
     public function index()
@@ -12,13 +10,19 @@ class UserController extends Controller
     public function profile($id = null)
     {
         if ($id === null) {
-            Session::start();
-            $id = Session::get('user_id');
-            header('Location: /user/profile/' . $id);
+            header('Location: /');
+            return;
         }
         require_once APP_ROOT . '/app/Model/UserModel.php';
         $userModel = new UserModel();
         $user = $userModel->getUserById($id);
+        if (!$user) {
+            header('Location: /');
+            return;
+        }
+        if($user['id'] !== Session::get('user_id')) {
+            header('Location: /user/profile/' . Session::get('user_id'));
+        }
         View::render('user_profile', ['title' => "User Profile", 'user' => $user]);
     }
 }

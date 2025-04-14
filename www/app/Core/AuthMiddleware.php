@@ -15,4 +15,13 @@ class AuthMiddleware
             exit;
         }
     }
+    public static function getUser() {
+        if (Session::get('is_logged_in')) {
+            return [
+                'id' => Session::get('user_id'),
+                'username' => Session::get('username')
+            ];
+        }
+        return null;
+    }
 }

@@ -23,7 +23,7 @@ class AuthController extends Controller
         $userModel = new UserModel();
         $user = $userModel->getUserByEmail($body['email']);
         if ($user) {
-            if ($body['password'] == $user['password']) {
+            if ($body['password'] === $user['password']) {
                 Session::start();
                 Session::set('user_id', $user['id']);
                 Session::set('username', $user['username']);
