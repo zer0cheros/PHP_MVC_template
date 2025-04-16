@@ -28,6 +28,7 @@ class AuthController extends Controller
                 Session::set('user_id', $user['id']);
                 Session::set('username', $user['username']);
                 Session::set('is_logged_in', true);
+                Session::set('role', $user['role']);
                 header('Location: /user/profile/' . $user['id']);
                 exit;
             } else {

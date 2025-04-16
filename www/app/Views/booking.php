@@ -1,6 +1,6 @@
-<head>
-    <link rel="stylesheet" href="/public/css/booking.css">
-</head>
+    <head>
+        <link rel="stylesheet" href="/public/css/booking.css">
+    </head>
 
 <h1 class="page-title"><?php echo $data['title']; ?></h1>
 <p class="subtext">Below you can see your bookings</p>

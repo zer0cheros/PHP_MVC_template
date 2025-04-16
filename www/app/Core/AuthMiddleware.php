@@ -19,9 +19,17 @@ class AuthMiddleware
         if (Session::get('is_logged_in')) {
             return [
                 'id' => Session::get('user_id'),
-                'username' => Session::get('username')
+                'username' => Session::get('username'),
+                'role' => Session::get('role')
             ];
         }
         return null;
+    }
+    public static function isAdmin()
+    {
+        if(Session::get('is_logged_in') && Session::get('role') == 'admin') {
+            return true;
+        }
+        return false;
     }
 }
